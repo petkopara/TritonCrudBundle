@@ -192,8 +192,6 @@ class PetkoparaCrudGenerator extends DoctrineCrudGenerator
             'filter_type' => $this->config->getFilterTYpe(),
             'without_sorting' => $this->config->getWithoutSorting(),
             'without_page_size' => $this->config->getWithoutPageSize(),
-            'identifier' => $this->metadata->identifier[0],
-
         ));
     }
 

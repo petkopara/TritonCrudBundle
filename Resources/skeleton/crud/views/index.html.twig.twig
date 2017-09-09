@@ -52,7 +52,7 @@
 {% if without_sorting == false %}
                 {{'{% import "PetkoparaCrudGeneratorBundle::macros/th_sortable.html.twig" as macros %}'}}
     {% for field, metadata in fields %}
-                        <th>{{"{{macros.th_sortable('" ~field~"',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , '" ~ route_name_prefix ~ "')}}"}}</th>
+                        <th>{{"{{macros.th_sortable('" ~field~"',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , '" ~ route_name_prefix ~ "', '" ~ field|capitalize ~ "')}}"}}</th>
     {% endfor %}
 {% else %}
     {% for field, metadata in fields %}
@@ -111,24 +111,20 @@
 
 
 <div class="row">
-    <div class="col-md-4 pull-left">
 {% if without_bulk_action == false %}
+        <div class="col-md-4 pull-left">
             <div class="pagination form-inline ">
                 <select class = "form-control" name="bulk_action" >
                     <option value="delete">DELETE</option>
                 </select>
                 <input type="submit" id='bulkSubmitBtn' onclick="return confirm('Are you sure?')" form="bulk_form" class="form-control btn btn-danger btn-sm" disabled>
             </div>
+        </div>
 {% endif %}
-    </div>
-    
-    <div class='col-md-3 pagination text-center'>
-         <p>{{'{{totalOfRecordsString}}'}}</p>
-    </div>
- 
-    <div class="col-md-5 text-right">
-        {{' {{ pagerHtml|raw }} '}}
-    </div>
+
+<div class="col-md-6 col-md-offset-2 text-right">
+    {{' {{ pagerHtml|raw }} '}}
+</div>
 </div> <!-- /#bottom -->
 
 

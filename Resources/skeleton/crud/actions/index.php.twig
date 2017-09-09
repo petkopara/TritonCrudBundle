@@ -11,14 +11,12 @@
     {
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('{{ bundle }}:{{ entity }}')->createQueryBuilder('e');
-
+        
 {% if filter_type != constant('Petkopara\\CrudGeneratorBundle\\Command\\CrudGeneratorCommand::FILTER_TYPE_NONE') %}
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
 {% endif %}
         list(${{ entity_pluralized }}, $pagerHtml) = $this->paginator($queryBuilder, $request);
         
-        $totalOfRecordsString = $this->getTotalOfRecordsString($queryBuilder, $request);
-
 {% if bundle_views == false%}
         return $this->render('{{ entity|lower|replace({'\\': '/'}) }}/index.html.twig', array(
 {%else%}
@@ -28,7 +26,6 @@
             'pagerHtml' => $pagerHtml,
 {% if filter_type != constant('Petkopara\\CrudGeneratorBundle\\Command\\CrudGeneratorCommand::FILTER_TYPE_NONE') %}
             'filterForm' => $filterForm->createView(),
-            'totalOfRecordsString' => $totalOfRecordsString,
 {% endif %}
 
         ));
@@ -146,25 +143,6 @@
         ));
 
         return array($entities, $pagerHtml);
-    }
-    
-    
-    
-    /*
-     * Calculates the total of records string
-     */
-    protected function getTotalOfRecordsString($queryBuilder, $request) {
-        $totalOfRecords = $queryBuilder->select('COUNT(e.{{identifier}})')->getQuery()->getSingleScalarResult();
-        $show = $request->get('pcg_show', 10);
-        $page = $request->get('pcg_page', 1);
-
-        $startRecord = ($show * ($page - 1)) + 1;
-        $endRecord = $show * $page;
-
-        if ($endRecord > $totalOfRecords) {
-            $endRecord = $totalOfRecords;
-        }
-        return "Showing $startRecord - $endRecord of $totalOfRecords Records.";
     }
     
     
