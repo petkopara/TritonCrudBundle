@@ -81,13 +81,13 @@ Using the --template option allows to set base template from which the crud view
 
 Every generated file is based on a template. There are default templates but they can be overridden by placing custom templates in one of the following locations, by order of priority:
 
-<info>BUNDLE_PATH/Resources/CrudGeneratorBundle/skeleton/crud
-APP_PATH/Resources/CrudGeneratorBundle/skeleton/crud</info>
+<info>BUNDLE_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/crud
+APP_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/crud</info>
 
 And
 
-<info>__bundle_path__/Resources/CrudGeneratorBundle/skeleton/form
-__project_root__/app/Resources/CrudGeneratorBundle/skeleton/form</info>
+<info>BUNDLE_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/form
+APP_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/form</info>
 
 EOT
         );
