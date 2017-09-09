@@ -103,19 +103,6 @@ The bundle adds few new parameters compared to the doctrine crud generator, to c
 
 Don't forget, that this is a just crud generator and you are free to change everything generated from this bundle. 
 
-
-### Templates
-
-Every generated file is based on a template. There are default templates but they can be overridden by placing custom templates in one of the following locations, by order of priority:
-
-    BUNDLE_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/crud
-    APP_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/crud
-
-And
-
-    BUNDLE_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/form
-    APP_PATH/Resources/PetkoparaCrudGeneratorBundle/skeleton/form
-
 ## Author
 
 Petko Petkov - petkopara at gmail dot com
