@@ -2,3 +2,7 @@ services:
 #    petkopara_crud.example:
 #        class: Petkopara\Bundle\CrudBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    petkopara_crud.twig_extension:
+        class: PetkoparaCrudAssetsBundle\Twig\CrudTemplateExtension
+        tags:
+            - { name: twig.extension }
