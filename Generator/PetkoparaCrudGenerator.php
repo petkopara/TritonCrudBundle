@@ -5,9 +5,11 @@ namespace Petkopara\CrudGeneratorBundle\Generator;
 use Doctrine\Common\Util\Inflector;
 use Doctrine\ORM\Mapping\ClassMetadataInfo;
 use Petkopara\CrudGeneratorBundle\Configuration\Configuration;
+use Petkopara\CrudGeneratorBundle\Twig\CrudTemplateExtension;
 use RuntimeException;
 use Sensio\Bundle\GeneratorBundle\Generator\DoctrineCrudGenerator;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
+use Twig_Loader_Filesystem;
 
 class PetkoparaCrudGenerator extends DoctrineCrudGenerator
 {
@@ -196,5 +198,16 @@ class PetkoparaCrudGenerator extends DoctrineCrudGenerator
 
         ));
     }
+
+    protected function getTwigEnvironment()
+    {
+        $twig = parent::getTwigEnvironment();
+        $twig->addExtension(new CrudTemplateExtension());
+        /** @var Twig_Loader_Filesystem $loader */
+        $loader = $twig->getLoader();
+        $loader->addPath(dirname(__DIR__) . '/Resources/views');
+        return $twig;
+    }
+
 
 }

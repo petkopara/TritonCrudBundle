@@ -1,14 +1,14 @@
 {{ "{% extends '"~  base_template  ~ "' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }}" }} - New {{ entity_singularized }}
+{{ "{{ parent() }}" }} - New {{ entity_singularized|humanize_lc }}
 {{ "{% endblock %}" }}
 
 {{ "{% block body %}" }}
 
 <div id="top" class="row">
     <div class="page-header">
-        <h2>New {{ entity_singularized }} <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
+        <h2>New {{ entity_singularized|humanize_lc }} <span class="glyphicon glyphicon-file" aria-hidden="true"></span> </h2>
     </div>
 </div>
     

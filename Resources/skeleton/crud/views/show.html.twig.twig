@@ -1,14 +1,14 @@
 {{ "{% extends '"~  base_template  ~ "' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }}" }} - {{ entity_singularized }}
+{{ "{{ parent() }}" }} - {{ entity_singularized|humanize_uc }}
 {{ "{% endblock %}" }}
 
 {{ "{% block body %}" }}
 
 <div id="top" class="row">
     <div class="page-header">
-        <h2>View {{ entity_singularized }} <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </h2>
+        <h2>View {{ entity_singularized|humanize_lc }} <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </h2>
     </div>
 </div>
 
@@ -17,7 +17,7 @@
     {%- for field, metadata in fields %}
 
     <div class="col-md-6">
-        <p><strong>{{ field|capitalize }}</strong></p>
+        <p><strong>{{ field|humanize_uc }}</strong></p>
         <p>
 {%if metadata.type in ['datetime','datetimetz'] %}
             {{ '{% if ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ ' %}{{ ' ~ entity_singularized ~ '.' ~ field|replace({'_': ''}) ~ '|date(\'Y-m-d H:i:s\') }}{% endif %}' }}

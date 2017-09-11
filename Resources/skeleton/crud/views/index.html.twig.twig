@@ -1,7 +1,7 @@
 {{ "{% extends '"~  base_template  ~ "' %}" }}
 
 {{ "{% block title %}" }}
-{{ "{{ parent() }}" }} - {{ entity_singularized }} index
+{{ "{{ parent() }}" }} - {{ entity_singularized|humanize_uc }} index
 {{ "{% endblock %}" }}
 
 {{ "{% block body %}" }}
@@ -10,7 +10,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="page-header">
-            <h2><a href="{{ "{{ path('"~ route_name_prefix ~"') }}" }}">{{ entity }}</a></h2>
+            <h2><a href="{{ "{{ path('"~ route_name_prefix ~"') }}" }}">{{ entity|humanize_uc }}</a></h2>
         </div>
     </div>
         
@@ -52,11 +52,11 @@
 {% if without_sorting == false %}
                 {{'{% import "PetkoparaCrudGeneratorBundle::macros/th_sortable.html.twig" as macros %}'}}
     {% for field, metadata in fields %}
-                        <th>{{"{{macros.th_sortable('" ~field~"',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , '" ~ route_name_prefix ~ "', '" ~ field|capitalize ~ "')}}" }}</th>
+                        <th>{{"{{macros.th_sortable('" ~field~"',app.request.get('pcg_sort_col'), app.request.get('pcg_sort_order') , '" ~ route_name_prefix ~ "', '" ~ field|humanize_uc ~ "')}}" }}</th>
     {% endfor %}
 {% else %}
     {% for field, metadata in fields %}
-                        <th>{{ field|capitalize }}</th>
+                        <th>{{ field|humanize_uc }}</th>
     {% endfor %}
 {% endif %}
 
