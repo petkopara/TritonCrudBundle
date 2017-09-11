@@ -1,6 +1,6 @@
 <?php
 
-namespace PetkoparaCrudGeneratorBundle\Twig;
+namespace Petkopara\CrudGeneratorBundle\Twig;
 
 /**
  * Class CrudTemplateExtension
